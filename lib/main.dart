@@ -65,7 +65,7 @@ class CounterStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CounterCubit counterCubit = CounterCubit();
+    final CounterCubit counterCubit = context.bloc<CounterCubit>();
     return BlocProvider(
       create: (context) => StockBloc(counterCubit),
       child: BlocBuilder<StockBloc, StockState>(

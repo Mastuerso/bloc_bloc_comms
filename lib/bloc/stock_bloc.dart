@@ -13,9 +13,11 @@ class StockBloc extends Bloc<StockEvent, StockState> {
   StreamSubscription reducerSubscription;
 
   StockBloc(this.counterCubit) : super(StockLoadSuccess(20)) {
-    reducerSubscription = counterCubit.listen((int data) {
-      add(StockChanged(data));
-    });
+    reducerSubscription = counterCubit.listen(
+      (int data) {
+        add(StockChanged(data));
+      },
+    );
   }
 
   @override
@@ -35,6 +37,7 @@ class StockBloc extends Bloc<StockEvent, StockState> {
       StockChanged event, StockState state) async* {
     if (state is StockLoadSuccess) {
       try {
+        print('hello ${state.count} + ${event.count}');
         yield StockLoadSuccess(state.count + event.count);
       } catch (_) {
         yield StockError();
