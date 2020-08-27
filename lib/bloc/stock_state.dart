@@ -12,6 +12,9 @@ class StockLoadSuccess extends StockState {
 
   @override
   List<Object> get props => [count];
+
+  @override
+  String toString() => 'StockLoadSuccess count: $count';
 }
 
 class StockLoadInProgress extends StockState {

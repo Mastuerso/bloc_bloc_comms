@@ -1,15 +1,22 @@
 import 'package:bloc/bloc.dart';
 
-class CounterCubit extends Cubit<int> {
-  CounterCubit() : super(0);
+class Diff {
+  const Diff(this.value);
+
+  final int value;
+
+  @override
+  String toString() => 'Diff value: $value';
+}
+
+class CounterCubit extends Cubit<Diff> {
+  CounterCubit() : super(Diff(0));
 
   void increment() {
-    emit(0);
-    emit(1);
+    emit(Diff(1));
   }
 
   void decrement() {
-    emit(0);
-    emit(-1);
+    emit(Diff(-1));
   }
 }

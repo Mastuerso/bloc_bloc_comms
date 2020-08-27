@@ -12,4 +12,7 @@ class StockChanged extends StockEvent {
 
   @override
   List<Object> get props => [count];
+
+  @override
+  String toString() => 'StockChanged count: $count';
 }

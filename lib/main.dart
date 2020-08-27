@@ -34,7 +34,7 @@ class CounterView extends StatelessWidget {
           title: Text('Bloc-Bloc Comms'),
         ),
         body: CounterStatus(),
-        floatingActionButton: BlocBuilder<CounterCubit, int>(
+        floatingActionButton: BlocBuilder<CounterCubit, Diff>(
           builder: (context, state) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.end,
