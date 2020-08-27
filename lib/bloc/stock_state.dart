@@ -5,13 +5,18 @@ abstract class StockState extends Equatable {
   const StockState();
 }
 
-class StockLoaded extends StockState {
+class StockLoadSuccess extends StockState {
   final int count;
 
-  StockLoaded(this.count);
+  StockLoadSuccess(this.count);
 
   @override
   List<Object> get props => [count];
+}
+
+class StockLoadInProgress extends StockState {
+  @override
+  List<Object> get props => [];
 }
 
 class StockError extends StockState {

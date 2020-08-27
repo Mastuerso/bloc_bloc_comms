@@ -70,7 +70,7 @@ class CounterStatus extends StatelessWidget {
       create: (context) => StockBloc(counterCubit),
       child: BlocBuilder<StockBloc, StockState>(
         builder: (context, state) {
-          if (state is StockLoaded) {
+          if (state is StockLoadSuccess) {
             return Center(
               child: Text(
                 'Stock: ${state.count}',

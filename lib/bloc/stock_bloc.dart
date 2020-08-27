@@ -12,9 +12,9 @@ class StockBloc extends Bloc<StockEvent, StockState> {
   final CounterCubit counterCubit;
   StreamSubscription reducerSubscription;
 
-  StockBloc(this.counterCubit) : super(StockLoaded(20)) {
+  StockBloc(this.counterCubit) : super(StockLoadSuccess(20)) {
     reducerSubscription = counterCubit.listen((int data) {
-      _mapStockChanged(StockChanged(data), state);
+      add(StockChanged(data));
     });
   }
 
@@ -33,10 +33,12 @@ class StockBloc extends Bloc<StockEvent, StockState> {
 
   Stream<StockState> _mapStockChanged(
       StockChanged event, StockState state) async* {
-    if (state is StockLoaded) {
+    if (state is StockLoadSuccess) {
       try {
-        yield StockLoaded(state.count + event.count);
-      } catch (_) {}
+        yield StockLoadSuccess(state.count + event.count);
+      } catch (_) {
+        yield StockError();
+      }
     }
   }
 }
